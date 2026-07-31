@@ -71,7 +71,8 @@ const wss = new WebSocketServer({ server });
 // gönderir; bir önceki turda 'pong' ile cevap vermeyen bağlantı ölü kabul
 // edilip terminate() edilir -> bu da anında leaveRoom() tetikler ve
 // rakibe 'opponent-left' gider.
-const HEARTBEAT_MS = 5000; // her 5 saniyede bir nabız kontrolü
+const HEARTBEAT_MS = 3000; // her 3 saniyede bir nabız kontrolü (önceden 5s'ydi; rakip
+                           // ayrılma/kopma bildirimi en fazla ~6 saniye içinde karşı tarafa ulaşır)
 
 function heartbeat() {
   this.isAlive = true;
